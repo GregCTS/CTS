@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chaînes TV</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+
+    #channel-list {
+      width: 200px;
+      background-color: #f1f1f1;
+      padding: 20px;
+    }
+
+    #channel-viewer {
+      flex-grow: 1;
+      padding: 20px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      margin-bottom: 10px;
+      cursor: pointer;
+    }
+
+    li:hover {
+      color: #007bff;
+    }
+
+    #video-player {
+      width: auto;
+      height: auto;
+    }
+
+    #token-input {
+      margin-bottom: 10px;
+      font-size: 12px;
+      width: 200px;
+    }
+
+    #token-button {
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div id="channel-list">
+    <input type="text" id="token-input" placeholder="Entrez le token">
+    <button id="token-button" onclick="applyToken()">Appliquer le token</button>
+    <ul id="channel-ul">
+	      <li onclick="changeChannel('http://82.80.219.111/smooths_live/tf1.isml/tf1.m3u8?token=')">TF1</li>
+      <li onclick="changeChannel('http://82.80.192.242/smooths_live/france2.isml/france2.m3u8?token=')">France 2</li>
+      <li onclick="changeChannel('http://82.80.192.242/smooths_live/france3.isml/france3.m3u8?token=')">France 3</li>
+      <li onclick="changeChannel('http://199.203.140.180/smooths_live/canalplus.isml/canalplus.m3u8?token=')">Canal+</li>
+      <li onclick="changeChannel('http://199.203.140.180/smooths_live/france5.isml/france5.m3u8?token=')">France 5</li>
+      <li onclick="changeChannel('http://82.80.219.111/smooths_live/m6.isml/m6.m3u8?token=')">M6</li>
+      <li onclick="changeChannel('http://199.203.140.180/smooths_live/arte.isml/arte.m3u8?token=')">Arte</li>
+      <li onclick="changeChannel('http://82.80.192.242/smooths_live/d8.isml/d8.m3u8?token=')">C8</li>
+      <li onclick="changeChannel('http://199.203.140.180/smooths_live/w9.isml/w9.m3u8?token=')">W9</li>
+      <li onclick="changeChannel('http://82.80.219.111/smooths_live/tmc.isml/tmc.m3u8?token=')">TMC</li>
+      <li onclick="changeChannel('http://199.203.140.180/smooths_live/nt1.isml/nt1.m3u8?token=')">NT1</li>
+      <li onclick="changeChannel('http://82.80.219.111/smooths_live/nrj12.isml/nrj12.m3u8?token=')">NRJ12</li>
+      <li onclick="changeChannel('http://replay1-il.annatel.tv/annatelplus/video.m3u8?token=')">Annatel+</li>
+      <li onclick="changeChannel('http://199.203.140.180/smooths_live/bfmtv.isml/bfmtv.m3u8?token=')">BFM tv</li>
+      <li onclick="changeChannel('http://82.80.219.111/smooths_live/itele.isml/itele.m3u8?token=')">iTele</li>
+      <li onclick="changeChannel('http://82.80.219.111/smooths_live/d17.isml/d17.m3u8?token=')">C17</li>
+      <li onclick="changeChannel('http://82.80.192.242/smooths_live/tf1seriesfilms.isml/tf1seriesfilms.m3u8?token=')">TF1 series</li>
+      <li onclick="changeChannel('http://199.203.140.180/smooths_live/lequipe21.isml/lequipe21.m3u8?token=')">L'Equipe 21</li>
+      <li onclick="changeChannel('http://82.80.219.111/smooths_live/6ter.isml/6ter.m3u8?token=')">6Ter</li>
+      <li onclick="changeChannel('http://82.80.219.111/smooths_live/rmcstory.isml/rmcstory.m3u8?token=')">RMC story</li>
+      <li onclick="changeChannel('http://82.80.219.111/smooths_live/i24newsfr.isml/i24newsfr.m3u8?token=')">i24 news</li>
+      <li onclick="changeChannel('http://82.80.219.111/smooths_live/cherie25.isml/cherie25.m3u8?token=')">Cherie25</li>
+      <li onclick="changeChannel('http://82.80.219.111/smooths_live/rmcdecouverte.isml/rmcdecouverte.m3u8?token=')">RMC decouverte</li>
+      <li onclick="changeChannel('http://199.203.140.180/smooths_live/beinsport1.isml/beinsport1.m3u8?token=')">Beinsport 1</li>
+      <li onclick="changeChannel('http://199.203.140.180/smooths_live/beinsport2.isml/beinsport2.m3u8?token=')">Beinsport 2</li>
+      <li onclick="changeChannel('http://82.80.192.242/smooths_live/beinsport1.isml/beinsport1-audio1=96000-video=1600000.m3u8?token=')">Beinsport 1 hd</li>
+      <li onclick="changeChannel('http://199.203.140.180/smooths_live/beinsport2.isml/beinsport2-audio1=96000-video=1600000.m3u8?token=')">Beinsport 2 hd</li>
+      <li onclick="changeChannel('http://82.80.192.242/smooths_live/beinsport3.isml/beinsport3.m3u8?token=')">Beinsport 3</li>
+      <li onclick="changeChannel('http://82.80.192.242/smooths_live/sfrsport1.isml/sfrsport1.m3u8?token=')">SFR Sport 1</li>
+      <li onclick="changeChannel('http://82.80.219.111/smooths_live/sfrsport2.isml/sfrsport2.m3u8?token=')">SFR Sport 2</li>
+      <li onclick="changeChannel('http://199.203.140.180/smooths_live/sfrsport3.isml/sfrsport3.m3u8?token=')">SFR Sport 3</li>
+      <li onclick="changeChannel('http://199.203.140.180/smooths_live/canalcinema.isml/canalcinema.m3u8?token=')">Canal Cinema</li>
+      <li onclick="changeChannel('http://82.80.192.242/smooths_live/canalsport.isml/canalsport.m3u8?token=')">Canal Sport</li>
+      <li onclick="changeChannel('http://199.203.140.180/smooths_live/canalsporthd.isml/canalsporthd.m3u8?token=')">Canal Sport hd</li>
+      <li onclick="changeChannel('http://199.203.140.180/smooths_live/canalseries.isml/canalseries.m3u8?token=')">Canal Series</li>
+      <li onclick="changeChannel('http://199.203.140.180/smooths_live/canalfamily.isml/canalfamily.m3u8?token=')">Canal Family</li>
+      <li onclick="changeChannel('http://82.80.219.111/smooths_live/cinepluspremier.isml/cinepluspremier.m3u8?token=')">Cine+ Premier</li>
+      <li onclick="changeChannel('http://82.80.192.242/smooths_live/cineplusfrisson.isml/cineplusfrisson.m3u8?token=')">Cine+ Frisson</li>
+      <li onclick="changeChannel('http://82.80.219.111/smooths_live/cineplusfamiz.isml/cineplusfamiz.m3u8?token=')">Canal+ Famiz</li>
+      <li onclick="changeChannel('http://82.80.192.242/smooths_live/parispremiere.isml/parispremiere.m3u8?token=')">Paris Premiere</li>
+      <li onclick="changeChannel('http://82.80.219.111/smooths_live/teva.isml/teva.m3u8?token=')">Teva</li>
+      <li onclick="changeChannel('http://82.80.219.111/smooths_live/rtl9.isml/rtl9.m3u8?token=')">RTL9</li>
+      <li onclick="changeChannel('http://199.203.140.180/tvlive/comedie/index.m3u8?token=')">Comedie</li>
+      <li onclick="changeChannel('http://199.203.140.180/smooths_live/euronews.isml/euronews.m3u8?token=')">EuroNews</li>
+      <li onclick="changeChannel('http://82.80.192.242/smooths_live/equidia.isml/equidia.m3u8?token=')">Equidia</li>
+      <li onclick="changeChannel('http://82.80.192.242/smooths_live/tf1hd.isml/tf1hd.m3u8?token=')">TF1 hd</li>
+      <li onclick="changeChannel('http://82.80.192.242/smooths_live/france2hd.isml/france2hd.m3u8?token=')">France 2 hd</li>
+      <li onclick="changeChannel('http://82.80.219.111/smooths_live/canalplushd.isml/canalplushd.m3u8?token=')">Canal+ hd</li>
+      <li onclick="changeChannel('http://82.80.192.242/smooths_live/m6hd.isml/m6hd.m3u8?token=')">M6 hd</li>
+      <li onclick="changeChannel('http://82.80.192.242/smooths_live/canalsporthd.isml/canalsporthd.m3u8?token=')">Canal+ Sport</li>
+      <li onclick="changeChannel('http://82.80.192.242/smooths_live/infosport.isml/infosport.m3u8?token=')">Info Sport</li>
+      <li onclick="changeChannel('http://199.203.140.180/smooths_live/disneychannel.isml/disneychannel.m3u8?token=')">Disney Channel</li>
+      <li onclick="changeChannel('http://82.80.192.242/tvlive/disneyjunior/index.m3u8?token=')">Disney Junior</li>
+      <li onclick="changeChannel('http://199.203.140.180/smooths_live/disneycinema.isml/disneycinema.m3u8?token=')">Disney Cinema</li>
+      <li onclick="changeChannel('http://82.80.192.242/smooths_live/nickjr.isml/nickjr.m3u8?token=')">Nickelodeon</li>
+      <li onclick="changeChannel('http://199.203.140.180/smooths_live/planete.isml/planete.m3u8?token=')">Planete</li>
+      <li onclick="changeChannel('http://82.80.219.111/smooths_live/atvcpp.isml/atvcpp.m3u8?token=')">A tv cpp</li>
+      <li onclick="changeChannel('http://82.80.192.242/smooths_live/eurosport.isml/eurosport.m3u8?token=')">EuroSport</li>
+      <li onclick="changeChannel('http://82.80.192.242/tvlive/eurosport2/index.m3u8?token=')">EuroSport 2</li>
+      <li onclick="changeChannel('http://199.203.140.180/smooths_live/canaldecale.isml/canaldecale.m3u8?token=')">Canal Decale</li>
+      <li onclick="changeChannel('http://replay1-il.annatel.tv/israeltorah/video.m3u8?token=')">Israel Torah</li>
+      <!-- Ajoutez plus de chaînes au besoin -->
+
+    </ul>
+  </div>
+
+  <div id="channel-viewer">
+    <video id="video-player" controls style="width: 100%; height: auto;"></video>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+  <script>
+    let currentToken = '';
+
+    // Charger le token depuis localStorage lors du chargement de la page
+    window.onload = function() {
+      const storedToken = localStorage.getItem('storedToken');
+      if (storedToken) {
+        currentToken = storedToken;
+        document.getElementById('token-input').value = currentToken;
+      }
+    };
+
+    function changeChannel(channelUrl) {
+      const video = document.getElementById('video-player');
+      const hls = new Hls();
+      const urlWithToken = channelUrl + currentToken;
+
+      hls.loadSource(urlWithToken);
+      hls.attachMedia(video);
+
+      video.addEventListener('loadedmetadata', function () {
+        video.play();
+      });
+    }
+
+    function applyToken() {
+      const tokenInput = document.getElementById('token-input');
+      const newToken = tokenInput.value;
+
+      if (newToken !== currentToken) {
+        currentToken = newToken;
+
+        // Stocker le nouveau token dans localStorage
+        localStorage.setItem('storedToken', currentToken);
+      }
+    }
+  </script>
+</body>
+</html>
