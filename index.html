@@ -10,17 +10,25 @@
       margin: 0;
       padding: 0;
       display: flex;
+      flex-wrap: wrap;
     }
 
     #channel-list {
-      width: 200px;
+      width: 30%;
       background-color: #f1f1f1;
       padding: 20px;
+      box-sizing: border-box;
     }
 
     #channel-viewer {
-      flex-grow: 1;
+      width: 70%;
       padding: 20px;
+      box-sizing: border-box;
+    }
+
+    #video-player {
+      width: 100%;
+      height: auto;
     }
 
     ul {
@@ -37,16 +45,10 @@
       color: #007bff;
     }
 
-<!--    #video-player {
-      width: auto;
-      height: auto;
-	  padding: 1px;
-    } -->
-
     #token-input {
       margin-bottom: 10px;
       font-size: 12px;
-      width: 200px;
+      width: 100%;
     }
 
     #token-button {
@@ -122,12 +124,11 @@
       <li onclick="changeChannel('http://199.203.140.180/smooths_live/canaldecale.isml/canaldecale.m3u8?token=')">Canal Decale</li>
       <li onclick="changeChannel('http://replay1-il.annatel.tv/israeltorah/video.m3u8?token=')">Israel Torah</li>
       <!-- Ajoutez plus de chaînes au besoin -->
-
     </ul>
   </div>
 
   <div id="channel-viewer">
-    <video id="video-player" controls style="width: 90%; height: auto;"></video>
+    <video id="video-player" controls></video>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
